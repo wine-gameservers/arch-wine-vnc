@@ -2,20 +2,12 @@
 
 # Table of contents
 <!-- vim-markdown-toc GFM -->
-
-* [Basic Docker Usage](#basic-docker-usage)
-	* [Default User](#default-user)
-* [Environment Variables](#environment-variables)
-* [System requirements](#system-requirements)
 * [Deployment](#deployment)
-	* [Deploying with Docker and systemd](#deploying-with-docker-and-systemd)
-	* [Deploying with docker-compose](#deploying-with-docker-compose)
-* [License](#license)
-
+	* [Deploying with docker run](#docker-run)
+	* [Deploying with docker-compose](#docker-compose)
 <!-- vim-markdown-toc -->
-
-# Basic Docker Usage
-
+# Deployment
+# Docker run
 ```
 $ docker run -d \
     --name arch-wine-vnc \
@@ -27,4 +19,21 @@ $ docker run -d \
     -e PUID=<UID for user> \
     -e PGID=<GID for user> \
     toetje585/arch-wine-vnc
+```
+# Docker compose
+```
+version: "3.9"
+services:
+  wine:
+    image: toetje585/arch-wine-vnc:latest
+    container_name: arch-wine-vnc
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /path/to/application:/opt/application
+    ports:
+      - 5900:5900
+    restart: unless-stopped
 ```
