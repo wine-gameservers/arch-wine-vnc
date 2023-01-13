@@ -4,7 +4,7 @@
 set -e
 
 # redirect new file descriptors and then tee stdout & stderr to supervisor log and console (captures output from this script)
-exec 3>&1 4>&2 &> >(tee -a /config/supervisord.log)
+exec 3>&1 4>&2 &> >(tee -a /var/log/supervisord.log)
 
 export PUID=$(echo "${PUID}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
 if [[ ! -z "${PUID}" ]]; then
@@ -37,7 +37,7 @@ groupmod -o -g "${PGID}" users &>/dev/null
 # CONFIG_PLACEHOLDER
 
 # set permissions to allow rw for all users (used when appending util output to supervisor log)
-chmod 666 "/config/supervisord.log"
+chmod 666 "/var/log/supervisord.log"
 
 echo "[info] Starting Supervisor..." | ts '%Y-%m-%d %H:%M:%.S'
 
