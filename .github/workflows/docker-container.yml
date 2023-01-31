@@ -27,7 +27,7 @@ jobs:
           tags: toetje585/arch-wine-vnc:latest
       -
         name: Sync readme
-        uses: dms-jpq/sync-dockerhub-readme@v1
+        uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_WINE_ARCH_VNC }}
