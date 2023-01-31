@@ -26,13 +26,13 @@ $ docker run -d \
 ```
 version: "3.9"
 services:
-  wine:
+  arch-wine-vnc:
     image: toetje585/arch-wine-vnc:latest
     container_name: arch-wine-vnc
     environment:
+      - VNC_PASSWORD=winevnc
       - PUID=<UID from user>
       - PGID=<GID from user>
-      - TZ=Europe/Amsterdam
     volumes:
       - /path/to/application:/opt/applicationname
       - /etc/localtime:/etc/localtime:ro

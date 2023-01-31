@@ -1,14 +1,14 @@
 version: "3.9"
 services:
-  wine:
+  arch-wine-vnc:
     image: toetje585/arch-wine-vnc:latest
     container_name: arch-wine-vnc
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Amsterdam
+      - VNC_PASSWORD=winevnc
+      - PUID=<UID from user>
+      - PGID=<GID from user>
     volumes:
-      - /path/to/application:/opt/application
+      - /path/to/applicationname:/opt/applicationname
+      - /etc/localtime:/etc/localtime:ro
     ports:
-      - 5900:5900
-    restart: unless-stopped
+      - 5900:5900/tcp
