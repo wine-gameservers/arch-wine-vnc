@@ -1,5 +1,8 @@
 # arch-wine-vnc
 
+ArchLinux based docker image with wine and vnc support, supports running Windows applications by using Wine. 
+This project is hosted at https://github.com/wine-gameservers/arch-wine-vnc/
+
 # Table of contents
 <!-- vim-markdown-toc GFM -->
 * [Deployment](#deployment)
@@ -13,11 +16,10 @@ $ docker run -d \
     --name arch-wine-vnc \
     -e VNC_PASSWORD=winevnc \
     -p 5900:5900/tcp \ 
+    -v /path/to/application:/opt/applicationname \
     -v /etc/localtime:/etc/localtime:ro \
-    -v /path/to/data:/opt/data \
-    -e UMASK=<umask for created files> \
-    -e PUID=<UID for user> \
-    -e PGID=<GID for user> \
+    -e PUID=<UID from user> \
+    -e PGID=<GID from user> \
     toetje585/arch-wine-vnc
 ```
 # Docker compose
@@ -28,12 +30,13 @@ services:
     image: toetje585/arch-wine-vnc:latest
     container_name: arch-wine-vnc
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=<UID from user>
+      - PGID=<GID from user>
       - TZ=Europe/Amsterdam
     volumes:
-      - /path/to/application:/opt/application
+      - /path/to/application:/opt/applicationname
+      - /etc/localtime:/etc/localtime:ro
     ports:
-      - 5900:5900
+      - 5900:5900/tcp
     restart: unless-stopped
 ```
