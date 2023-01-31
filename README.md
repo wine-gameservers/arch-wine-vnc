@@ -38,5 +38,4 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 5900:5900/tcp
-    restart: unless-stopped
 ```
