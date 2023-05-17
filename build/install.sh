@@ -124,8 +124,8 @@ fi
 EOF
 
 # replace env vars placeholder string with contents of file (here doc)
-sed -i '/# ENVVARS_PLACEHOLDER/{
-    s/# ENVVARS_PLACEHOLDER//g
+sed -i '/# ENVVARS_COMMON_PLACEHOLDER/{
+    s/# ENVVARS_COMMON_PLACEHOLDER//g
     r /tmp/envvars_heredoc
 }' /usr/local/bin/init.sh
 rm /tmp/envvars_heredoc
