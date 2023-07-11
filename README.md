@@ -24,7 +24,6 @@ $ docker run -d \
 ```
 # Docker compose
 ```
-version: "3.9"
 services:
   arch-wine-vnc:
     image: toetje585/arch-wine-vnc:latest
