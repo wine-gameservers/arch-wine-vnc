@@ -36,7 +36,7 @@ pacman -Syu --noconfirm
 # needed packages
 
 echo "[info] Installing packages currently not installed..."
-pacman -S xorg-server-xvfb tigervnc supervisor wine moreutils lxde --noconfirm
+pacman -S xorg-server-xvfb x11vnc supervisor wine moreutils lxde --noconfirm
 
 # add user "nobody" to primary group "users" (will remove any other group membership)
 usermod -g users nobody
