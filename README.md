@@ -38,3 +38,7 @@ services:
     ports:
       - 5900:5900/tcp
 ```
+
+# Notes:
+
+17-10-2023: Rebuild image to update wine and other packages
