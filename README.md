@@ -41,4 +41,4 @@ services:
 
 # Notes:
 
-17-10-2023: Rebuild image to update wine and other packages
+05-01-2024: Rebuild image to update wine and other packages
